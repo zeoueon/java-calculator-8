@@ -13,7 +13,7 @@ public class StringSplitterTest {
         StringSplitter stringSplitter = new StringSplitter("//;\\n1");
 
         //when
-        String result[] = stringSplitter.splitString(";");
+        String result[] = stringSplitter.splitString();
 
         //then
         assertThat(result).containsExactly("1");
