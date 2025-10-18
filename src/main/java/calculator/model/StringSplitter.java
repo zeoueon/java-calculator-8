@@ -4,11 +4,15 @@ import java.util.regex.Pattern;
 
 public class StringSplitter {
 
-    private String inputString;
     private final static String DEFAULT_DELIMITER = "[,:]";
+
+    private String inputString;
+    private String delimiter;
+    private DelimiterExtractor delimiterExtractor = new DelimiterExtractor();
 
     public StringSplitter(String inputString) {
         this.inputString = setInputString(inputString);
+        this.delimiter = setDelimiter(inputString);
     }
 
     private String setInputString(String inputString) {
@@ -20,7 +24,11 @@ public class StringSplitter {
         return inputString;
     }
 
-    public String[] splitString(String delimiter) {
+    private String setDelimiter(String inputString) {
+        return delimiterExtractor.extractDelimiter(inputString);
+    }
+
+    public String[] splitString() {
         if (delimiter.equals(DEFAULT_DELIMITER)) {
             String[] result = inputString.split(delimiter);
             return result;
