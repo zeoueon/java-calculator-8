@@ -6,10 +6,14 @@ public class SumCalculator implements Calculator {
 
     @Override
     public Double calculate(List<Double> numbers) {
-        return numbers.stream()
-                .mapToDouble(Double::doubleValue)
-                .sum();
+        return formatDouble(
+                numbers.stream()
+                        .mapToDouble(Double::doubleValue)
+                        .sum()
+        );
     }
 
-    // Double 반올림 함수도 추가하자.
+    public Double formatDouble(Double number) {
+        return Math.round(number * 1000) / 1000.0; // 소수점 셋째자리까지 표시
+    }
 }
